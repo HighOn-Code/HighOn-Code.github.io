@@ -29,20 +29,23 @@
   <h1>Countdown to 10 PM</h1>
   <div id="countdown"></div>
 
-  <script>
+    <script>
     function updateCountdown() {
-      const now = new Date();
       const targetTime = new Date();
-      const utcOffset = 3 * 60 + 30; // 3 hours and 30 minutes in minutes
-      targetTime.setUTCHours(22 - (utcOffset / 60), 0, 0, 0); // Set the target time to 10 PM in UTC +3:30
+      targetTime.setUTCHours(18, 30, 0, 0); // Set the target time to 10 PM in UTC +3:30 (18:30 UTC)
 
-      // To account for the time difference between now and the target time
-      let timeDifference = targetTime - now;
+      const now = new Date();
+      const nowInUtcPlus3_30 = new Date(now.getTime() + (3 * 60 + 30) * 60 * 1000); // Convert current time to UTC +3:30
+
+      // Calculate the time remaining
+      let timeDifference = targetTime - nowInUtcPlus3_30;
       if (timeDifference <= 0) {
         document.getElementById("countdown").innerText = "It's 10 PM (UTC +3:30)!";
       } else {
         const hoursLeft = Math.floor(timeDifference / (1000 * 60 * 60));
-        document.getElementById("countdown").innerText = `${hoursLeft} hours left until 10 PM (UTC +3:30).`;
+        const minutesLeft = Math.floor((timeDifference / (1000 * 60)) % 60);
+        const secondsLeft = Math.floor((timeDifference / 1000) % 60);
+        document.getElementById("countdown").innerText = `${hoursLeft} hours, ${minutesLeft} minutes, and ${secondsLeft} seconds left until 10 PM (UTC +3:30).`;
       }
     }
 
