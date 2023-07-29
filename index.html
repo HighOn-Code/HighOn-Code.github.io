@@ -2,20 +2,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Countdown to 10 PM</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    #countdown {
-      font-size: 36px;
-      font-weight: bold;
-      color: #007bff;
-      margin-bottom: 20px;
-    }
-  </style>
+  <title>Where It All Begins</title>
+
 </head>
   
 <body>
@@ -25,36 +13,6 @@
    <img src="https://media.giphy.com/media/FnGJfc18tDDHy/giphy.gif" />
   </div>
 
-
-  <h1>Countdown to 10 PM</h1>
-  <div id="countdown"></div>
-
-    <script>
-    function updateCountdown() {
-      const targetTime = new Date();
-      targetTime.setUTCHours(22, 0, 0); // Set the target time to 10 PM in UTC +3:30 (22 UTC)
-
-      const now = new Date();
-      const nowInUtcPlus3_30 = new Date(now.getTime() + (3 * 60 + 30) * 60 * 1000); // Convert current time to UTC +3:30
-
-      // Calculate the time remaining
-      let timeDifference = targetTime - nowInUtcPlus3_30;
-      if (timeDifference <= 0) {
-        document.getElementById("countdown").innerText = "It's 10 PM (UTC +3:30)!";
-      } else {
-        const hoursLeft = Math.floor(timeDifference / (1000 * 60 * 60));
-        const minutesLeft = Math.floor((timeDifference / (1000 * 60)) % 60);
-        const secondsLeft = Math.floor((timeDifference / 1000) % 60);
-        document.getElementById("countdown").innerText = `${hoursLeft} hours, ${minutesLeft} minutes, and ${secondsLeft} seconds left until 10 PM (UTC +3:30).`;
-      }
-    }
-
-    // Update the countdown every second
-    setInterval(updateCountdown, 1000);
-
-    // Initial update when the page loads
-    updateCountdown();
-  </script>
 
 </body>
  
